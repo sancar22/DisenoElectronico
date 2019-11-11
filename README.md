@@ -3,7 +3,7 @@
 
 ## Meet the requirements (BOTH WEB AND MOBILE):
 
-### WEB REQS
+### WEB REQS (TOTAL WEB COMPLETION: 100%)
 
 Through the React Web Application, the user will be able to:
 
@@ -16,7 +16,7 @@ Through the React Web Application, the user will be able to:
 - Display the car's RPM and speed using OBD2. (100% done)
 
 
-### MOBILE APP REQ
+### MOBILE APP REQ (TOTAL MOBILE COMPLETION: 100%)
 
 Through the Android Mobile Application, the user will be able to:
 
