@@ -1,0 +1,82 @@
+html {
+	height: 100vh;
+	width: 100vw;
+	background: rgba(183, 222, 237, 1);
+	background: -moz-linear-gradient(
+		-45deg,
+		rgba(183, 222, 237, 1) 0%,
+		rgba(113, 206, 239, 1) 33%,
+		rgba(183, 222, 237, 1) 57%,
+		rgba(33, 180, 226, 1) 65%,
+		rgba(33, 180, 226, 1) 100%
+	);
+	background: -webkit-gradient(
+		left top,
+		right bottom,
+		color-stop(0%, rgba(183, 222, 237, 1)),
+		color-stop(33%, rgba(113, 206, 239, 1)),
+		color-stop(57%, rgba(183, 222, 237, 1)),
+		color-stop(65%, rgba(33, 180, 226, 1)),
+		color-stop(100%, rgba(33, 180, 226, 1))
+	);
+	background: -webkit-linear-gradient(
+		-45deg,
+		rgba(183, 222, 237, 1) 0%,
+		rgba(113, 206, 239, 1) 33%,
+		rgba(183, 222, 237, 1) 57%,
+		rgba(33, 180, 226, 1) 65%,
+		rgba(33, 180, 226, 1) 100%
+	);
+	background: -o-linear-gradient(
+		-45deg,
+		rgba(183, 222, 237, 1) 0%,
+		rgba(113, 206, 239, 1) 33%,
+		rgba(183, 222, 237, 1) 57%,
+		rgba(33, 180, 226, 1) 65%,
+		rgba(33, 180, 226, 1) 100%
+	);
+	background: -ms-linear-gradient(
+		-45deg,
+		rgba(183, 222, 237, 1) 0%,
+		rgba(113, 206, 239, 1) 33%,
+		rgba(183, 222, 237, 1) 57%,
+		rgba(33, 180, 226, 1) 65%,
+		rgba(33, 180, 226, 1) 100%
+	);
+	background: linear-gradient(
+		135deg,
+		rgba(183, 222, 237, 1) 0%,
+		rgba(113, 206, 239, 1) 33%,
+		rgba(183, 222, 237, 1) 57%,
+		rgba(33, 180, 226, 1) 65%,
+		rgba(33, 180, 226, 1) 100%
+	);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', endColorstr='#21b4e2', GradientType=1 );
+}
+
+#map {
+	position: relative;
+	left: 4%;
+	height: 300px;
+	width: 90%;
+	border-style: solid;
+	border-color: black;
+	border-width: 6px;
+	border-radius: 10px;
+}
+
+.title {
+	text-align: center;
+}
+
+.GPS-Box {
+	position: relative;
+	margin: 2%;
+	border-style: solid;
+	border-color: black;
+	border-width: 5px;
+	border-radius: 10px;
+	width: 25%;
+	background-color: #d1ccccce;
+	left: 32%;
+}

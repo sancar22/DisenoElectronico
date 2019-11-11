@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Truck tracker</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+		<style>
+			#map {
+				position: absolute;
+				height: 550px;
+				width: 1050px;
+				left: 250px;
+				top: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 style="text-align: center">Truck Tracker</h1>
+		<div>
+			<form>
+				<label>Id number: </label><br />
+				<input type="text" id="clientid" /><br />
+			</form>
+		</div>
+		<div>
+			<form style="position:absolute;top:130px">
+				<label>Initial Date: </label><br />
+				<input type="datetime-local" id="idate" /><br />
+			</form>
+		</div>
+		<div>
+			<form style="position:absolute;top:190px">
+				<label>Final Date: </label><br />
+				<input type="datetime-local" id="fdate" /><br />
+			</form>
+		</div>
+
+		<button style="position:absolute;top:240px" id="button">
+			Submit
+		</button>
+		<div style="position:absolute;top:260px">
+			<p id="demo"></p>
+		</div>
+
+		<div id="map"></div>
+		<div class="GPS-Box" style="position:absolute;top:390px">
+			<div id="Long" class="Coordinates">
+				Longitude:
+			</div>
+			<div id="Lat" class="Coordinates">
+				Latitude:
+			</div>
+			<div id="Date" class="Coordinates">
+				Date:
+			</div>
+			<div id="Time" class="Coordinates">
+				Time:
+			</div>
+		</div>
+		<script
+			async
+			defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaUgFuVypDeWug-2htEXKEssI7TpifSg8&callback=initMap"
+		></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</body>
+</html>
+
+<script>
+	document.getElementById("button").addEventListener("click", daterange);
+	function formatdate(date, time) {
+		let fecha = `${date.getUTCDate()}-${date.getUTCMonth() +
+			1}-${date.getUTCFullYear()} `;
+		return fecha;
+	}
+	function formattime(date) {
+		let hora = `${date.getUTCHours() - 5}:${date.getMinutes()}`;
+		return hora;
+	}
+	function daterange() {
+		var clientid = document.getElementById("clientid").value;
+		var iidate = document.getElementById("idate").value;
+		let ffdate = document.getElementById("fdate").value;
+		let idate = new Date(iidate);
+		let fdate = new Date(ffdate);
+		let fDate = formatdate(idate);
+		let lDate = formatdate(fdate);
+		let fTime = formattime(idate);
+		let lTime = formattime(fdate);
+		let range = {
+			fDate: fDate,
+			lDate: lDate,
+			fTime: fTime,
+			lTime: lTime
+		};
+		console.log(range);
+		fetchhist(range);
+		document.getElementById(
+			"demo"
+		).innerHTML = `Historical Range user ${clientid} :<br>\
+    from: ${fDate} @ ${fTime} <br>\ to: ${lDate} @ ${lTime} <br>\ $ `;
+	}
+
+	let longitude = document.getElementById("Long");
+	let latitude = document.getElementById("Lat");
+	let date = document.getElementById("Date");
+	let time = document.getElementById("Time");
+	let now;
+	let msg;
+	let nWeeks, day, times, lon, lat, oldLat, oldLon, map, marker;
+	let markers = [];
+	let flightPlanCoordinates = [];
+	lat = 10.99304;
+	lon = -74.8281;
+	function act(long, lat, dat, tim) {
+		longitude.innerText = `Longitude: ${long}`;
+		latitude.innerText = `Latitude: ${lat}`;
+		date.innerText = `Date: ${dat}`;
+		time.innerText = `Time: ${tim}`;
+	}
+
+	function fetchData() {
+		fetch("/coord") // Fetching the data from the server
+			.then(res => {
+				return res.json();
+			})
+			.then(data => {
+				now = new Date(); // To get the internal date
+				data = JSON.parse(data);
+				oldLat = lat;
+				oldLon = lon;
+				lat = data.lat;
+				lon = data.lon;
+				act(
+					`${lon}`,
+					`${lat}`,
+					`${now.getDay()}/${now.getMonth()}/${now.getFullYear()}`,
+					`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+				);
+			});
+	}
+	let rangecoords;
+	function fetchhist(data) {
+		console.log(data);
+		axios
+			.post("/gps/hist", data)
+			.then(function(response) {
+				console.log(response);
+			})
+			.catch(function(error) {
+				console.log(error);
+			});
+	}
+	function initMap() {
+		// Variables
+		// Map options
+		let opt = {
+			zoom: 18,
+			center: { lat: parseFloat(lat), lng: parseFloat(lon) }
+		};
+		// Creating the map
+		map = new google.maps.Map(document.getElementById("map"), opt);
+		let flightPlanCoordinate = [
+			{ lat: 10.99304, lng: -74.8281 },
+			{ lat: 10.99304 + 0.001, lng: -74.8281 - 0.001 }
+		];
+
+		let flightPath = new google.maps.Polyline({
+			path: flightPlanCoordinate,
+			geodesic: true,
+			strokeColor: "#FF0000",
+			strokeOpacity: 1.0,
+			strokeWeight: 2
+		});
+		flightPath.setMap(null);
+		// Creating the marker
+		function addMarker(newCoord, oldCoord) {
+			marker = new google.maps.Marker({
+				position: newCoord,
+				map: map
+			});
+			markers.push(marker);
+			flightPlanCoordinate = [oldCoord, newCoord];
+			flightPath = new google.maps.Polyline({
+				path: flightPlanCoordinate,
+				geodesic: true,
+				strokeColor: "#FF0000",
+				strokeOpacity: 1.0,
+				strokeWeight: 2
+			});
+			flightPath.setMap(map);
+		}
+
+		function setMapOnAll(map) {
+			for (var i = 0; i < markers.length; i++) {
+				markers[i].setMap(map);
+			}
+		}
+		function clearMarkers() {
+			setMapOnAll(null);
+		}
+		function showMarkers() {
+			setMapOnAll(map);
+		}
+		function deleteMarkers() {
+			clearMarkers();
+			markers = [];
+		}
+		function actMap() {
+			deleteMarkers();
+			addMarker(
+				{ lat: parseFloat(lat), lng: parseFloat(lon) },
+				{ lat: parseFloat(oldLat), lng: parseFloat(oldLon) }
+			);
+			map.setCenter(marker.getPosition());
+			setTimeout(actMap, 500);
+		}
+
+		actMap();
+	}
+	function go() {
+		fetchData();
+		setTimeout(go, 500); // callback
+	}
+	go();
+</script>

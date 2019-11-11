@@ -1,0 +1,15 @@
+.home-title {
+  font-size: 5vw;
+}
+.home-text {
+  align-items: center;
+  width: 60vw;
+  font-size: 2vw;
+}
+
+.home-btn {
+  font-size: 2.5vw;
+  height: 6vw;
+  width: 15vw;
+  text-align: center;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Truck Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
+  <body>
+    <div>
+      <div class="Title-Box">
+        <h1 class="Title">Truck Tracker</h1>
+      </div>
+      <div class="GPS-Box">
+        <div id="Long" class="Coordinates">
+          Longitude:
+        </div>
+        <div id="Lat" class="Coordinates">
+          Latitude:
+        </div>
+        <div id="Date" class="Coordinates">
+          Date:
+        </div>
+        <div id="Time" class="Coordinates">
+          Time:
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  let longitude = document.getElementById("Long");
+  let latitude = document.getElementById("Lat");
+  let date = document.getElementById("Date");
+  let time = document.getElementById("Time");
+  let now;
+  let msg;
+  function act(long, lat, dat, tim) {
+    longitude.innerText = `Longitude: ${long}`;
+    latitude.innerText = `Latitude: ${lat}`;
+    date.innerText = `Date: ${dat}`;
+    time.innerText = `Time: ${tim}`;
+  }
+  function fetchData() {
+    fetch("/coord")
+    .then(function (res) {
+        return res.json();
+    })
+    .then(data => {
+    now = new Date();
+    let nWeeks, day, time, lon, lat;
+    console.log(data);
+    // >REV002041663724+1099304-0748281400000032;ID=AVENGERS<
+    msg = data.split("");
+    nWeeks = `${msg[6]}${msg[7]}${msg[8]}${msg[9]}`; // Number of weeks since 00:00 AM January 6, 1980
+    day = `${msg[10]}`; // Day of week. From 0 to 6 where 0 is Sunday.
+    time = `${msg[11]}${msg[12]}${msg[13]}${msg[14]}${msg[15]}`; // Time of the generated report. Seconds since 00:00 of the current date.
+    lon = `${msg[16]}${msg[17]}${msg[18]}.${msg[19]}${msg[20]}${msg[21]}${msg[22]}${msg[23]}`;
+    lat = `${msg[24]}${msg[25]}${msg[26]}${msg[27]}.${msg[28]}${msg[29]}${msg[30]}${msg[31]}${msg[32]}`;
+    //
+    act(`${lon}`,`${lat}`,`${now.getDay()}/${now.getMonth()}/${now.getFullYear()}`, `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
+    })
+  }
+  
+  function go () {
+      fetchData();
+      setTimeout(go, 1000); // callback
+  }
+  go();
+
+</script>

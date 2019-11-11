@@ -1,0 +1,150 @@
+﻿#Syrus SB script
+#Getting Started example
+
+
+#Delete any previous configuration
+>SRT;ALL<
+
+
+#Unit's ID
+>SIDAVENGERS<
+
+
+#Use user set ID
+>SXAID0<
+
+
+#configuring the SIM's PIN to empty
+>SRFI1234<
+
+
+#configuring the APN
+>SRFAinternet.movistar.com.co<
+
+
+# Program the movistar Login
+>SRFLmovistar<
+
+
+# Program the movistar Password
+>SRFLmovistar<
+
+
+# Send message
+#To set a telephone type Destination Point:
+>SXADP10003016179718<
+
+
+>SDA0;P10,P15<
+>SGC00TR00002<
+>SED01NV0;C00+;ACT=QPV;GM<
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Red: Destination Address
+Blue: Destination Point
+Yellow: Command console access
+Green: Confirmation selection
+Pink: Number of the counter signal
+Purple: Event definition Signal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        AWS
+>SIDAVENGERS<
+>SXAID0<
+>SRFAinternet.movistar.com.co<
+>SRFLmovistar<
+>SXADP00003.208.7.224;41232<
+>SDA1;P00,P15<
+>SGC00TR00005<
+>SED00NV1;C00+;ACT=QPV;GM<
+
+
+
+
+CASA DE CARLOS
+>SIDAVENGERS<
+>SXAID0<
+>SRFAinternet.movistar.com.co<
+>SRFLmovistar<
+>SXADP0000190.165.26.130;1280<
+>SDA1;P00,P15<
+>SGC00TR00005<
+>SED00NV1;C00+;ACT=QPV;GM<
+
+
+
+
+
+
+
+
+        REDUNDANCIA Abuela santiago
+        >SIDAVENGERS<
+>SXAID0<
+>SRFAinternet.movistar.com.co<
+>SRFLmovistar<
+>SXADP0000186.170.89.252;4000<
+>SXADP0402186.170.89.252;6000<
+>SDA1;P00,P04,P15<
+>SGC00TR00005<
+>SED00NV1;C00+<
+
+
+
+
+REDUNDANCIA Daza, Santiago
+        >SIDAVENGERS<
+>SXAID0<
+>SRFAinternet.movistar.com.co<
+>SRFLmovistar<
+>SXADP0000181.136.188.85;4003<
+>SXADP0402181.136.188.85;4001<
+>SXADP0100186.170.89.252;4000<
+>SXADP0502186.170.89.252;6000<
+>SDA1;P00,P01,P04,P05,P15<
+>SGC00TR00005<
+>SED00NV1;C00+<

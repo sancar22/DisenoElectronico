@@ -1,0 +1,33 @@
+.RequestBox {
+	display: flex;
+	flex-direction: row;
+	&--Menu {
+		margin-left: 5%;
+		margin-top: 3%;
+		text-align: center;
+		width: 90%;
+		height: 40vw;
+		border: 5px solid #43425d;
+		border-radius: 10px;
+		overflow: scroll;
+		background-color: whitesmoke;
+		&--Title {
+			font-size: 3.5vw;
+		}
+		&--Item {
+			cursor: pointer;
+			font-size: 1vw;
+		}
+		&--Item:hover {
+			background-color: lightgray;
+		}
+	}
+	&--Map {
+		position: relative;
+		left: 0vw;
+		border-style: solid;
+		margin: 3vw;
+		border-radius: 10px;
+		border: 5px solid #43425d;
+	}
+}

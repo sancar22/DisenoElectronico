@@ -1,0 +1,9 @@
+.dashboard-links {
+	display: flex;
+	flex-direction: column;
+	width: 60%;
+}
+
+.dashboard-link {
+	margin-top: 3vw;
+}

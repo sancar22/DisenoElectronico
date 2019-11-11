@@ -1,0 +1,40 @@
+{
+	"name": "client",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@react-google-maps/api": "^1.2.3-alpha.5",
+		"axios": "^0.18.0",
+		"classnames": "^2.2.6",
+		"jwt-decode": "^2.2.0",
+		"moment": "^2.22.2",
+		"prop-types": "^15.6.2",
+		"react": "^16.8.6",
+		"react-datepicker": "^2.4.0",
+		"react-dom": "^16.8.6",
+		"react-moment": "^0.7.9",
+		"react-redux": "^5.0.7",
+		"react-router-dom": "^4.3.1",
+		"react-scripts": "3.0.0",
+		"redux": "^4.0.0",
+		"redux-thunk": "^2.3.0"
+	},
+	"scripts": {
+		"start": "PORT=3030 react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
+}

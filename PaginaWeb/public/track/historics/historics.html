@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Truck tracker</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			media="screen"
+			href="historics.css"
+        />
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<div class="">
+			<h1 class="title">Truck Tracker</h1>
+			<div id="map"></div>
+			<div class="GPS-Box">
+				Initial Date
+				<div>
+					<input type="date" name="firstDate" id="fDate" />
+					<input type="time" name="firstTime" id="fTime" />
+				</div>
+				Final Date
+				<div>
+					<input type="date" name="lastDate" id="lDate" />
+					<input type="time" name="lastTime" id="lTime" />
+				<div class="dispBtn" id="dispBtn">Display</div>
+			</div>
+			<div class="text">Click the line to view the exact time the truck passed by that location.</div>
+		</div>
+	</body>
+</html>
+<script
+	async
+	defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaUgFuVypDeWug-2htEXKEssI7TpifSg8&callback=initMap"
+></script>
+<script type="text/javascript" src="historics.js"></script>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Truck tracker</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" type="text/css" media="screen" href="realTime.css" />
+	</head>
+	<body>
+		<h1 class="title">Truck Tracker</h1>
+		<div id="map"></div>
+		<div class="GPS-Box">
+			<div id="Long" class="Coordinates">
+				Longitude:
+			</div>
+			<div id="Lat" class="Coordinates">
+				Latitude:
+			</div>
+			<div id="Date" class="Coordinates">
+				Date:
+			</div>
+			<div id="Time" class="Coordinates">
+				Time:
+			</div>
+		</div>
+		<script
+			async
+			defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaUgFuVypDeWug-2htEXKEssI7TpifSg8&callback=initMap"
+		></script>
+	</body>
+</html>
+<script type="text/javascript" src="realTime.js"></script>

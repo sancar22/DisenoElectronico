@@ -1,0 +1,46 @@
+.cont {
+	height: 100%;
+}
+.Map {
+	padding-top: 2vw;
+	&--Map {
+		position: relative;
+		top: 5%;
+		left: 5%;
+		border: 5px solid #43425d;
+		height: 25vw;
+		width: 75vw;
+	}
+}
+
+.Calls {
+	margin-left: 5%;
+	margin-top: 3%;
+	text-align: center;
+	width: 75vw;
+	height: 1vw;
+	border: 5px solid #43425d;
+	border-radius: 40px;
+	overflow: scroll;
+	&--Item {
+		cursor: pointer;
+	}
+	&--Item:hover {
+		background-color: lightgray;
+	}
+	&--Body {
+		overflow: scroll;
+		border: 5px solid #43425d;
+		border-radius: 10px;
+		height: 10vw;
+		&--Item:hover {
+			background-color: lightgray;
+			cursor: pointer;
+		}
+	}
+}
+.Table {
+	&--Head {
+		background-color: lightgray;
+	}
+}

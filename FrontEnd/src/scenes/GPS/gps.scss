@@ -1,0 +1,58 @@
+.Box {
+	position: relative;
+	left: 25%;
+	display: flex;
+	flex-direction: row;
+	width: 75%;
+	&--Search {
+		margin: 40px;
+	}
+	&--Button {
+		border-color: #909090;
+		border-style: solid;
+		border-width: 1px;
+		font-size: 1.2vw;
+		font-weight: 600;
+		border-radius: 1vw;
+		background-color: #ad2a18;
+		margin: 40px;
+		width: 100px;
+		text-align: center;
+		cursor: pointer;
+	}
+}
+
+@media only screen and (max-width: 724px) {
+	.Box {
+		position: relative;
+		left: 13%;
+		display: flex;
+		flex-direction: column;
+		width: 75%;
+		&--Search {
+			width: 40vw;
+			margin-top: 40px;
+			margin-left: 40px;
+			margin-right: 40px;
+			margin-bottom: 1px;
+		}
+		&--Button {
+			position: relative;
+			border-color: #909090;
+			border-style: solid;
+			border-width: 1px;
+			font-size: 2.5vw;
+			font-weight: 600;
+			border-radius: 1vw;
+			background-color: #ad2a18;
+			width: 20vw;
+			height: 4vw;
+			text-align: center;
+			margin-top: 5px;
+			margin-left: 80px;
+			margin-right: 40px;
+			margin-bottom: 20px;
+			cursor: pointer;
+		}
+	}
+}
