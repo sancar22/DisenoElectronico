@@ -1,4 +1,4 @@
-# Electronic Design
+# Electronic Design (TOTAL PROJECT COMPLETION: 100%)
 
 
 ## Meet the requirements (BOTH WEB AND MOBILE):
@@ -13,17 +13,17 @@ Through the React Web Application, the user will be able to:
 
 - Decipher Syrus' frame and translate it to an understandable format. (100% done)
 
-- Display the car's RPM and speed using OBD2.
+- Display the car's RPM and speed using OBD2. (100% done)
 
 
 ### MOBILE APP REQ
 
 Through the Android Mobile Application, the user will be able to:
 
-- Get the current coordinates every 10 seconds while app is in foreground.
+- Get the current coordinates every 10 seconds while app is in foreground. (100% done)
 
-- Connect via Bluetooth with the OBD2 connected to a car.
+- Connect via Bluetooth with the OBD2 connected to a car. (100% done)
 
-- Display the Syrus Frame along with the deciphered format.
+- Display the Syrus Frame along with the deciphered format. (100% done)
 
-- Send deciphered format to server.
+- Send deciphered format to server. (100% done)
