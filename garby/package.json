@@ -4,7 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"@react-google-maps/api": "^1.2.3-alpha.11",
-		"node-sass": "^4.12.0",
+		"node-sass": "^4.13.1",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
 		"react-geocode": "^0.1.2",
